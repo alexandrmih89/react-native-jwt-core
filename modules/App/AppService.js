@@ -9,6 +9,7 @@ const refreshTokenKey = `${dataKey}:refreshToken`;
 const userKey = `${dataKey}:user`;
 
 export const restoreTokens = () => {
+
   return Promise.all([
     AsyncStorage.getItem(accessTokenKey),
     AsyncStorage.getItem(refreshTokenKey),
@@ -19,7 +20,7 @@ export const restoreTokens = () => {
         return null;
       })
   ])
-    .then(data => ({ accessToken: data[0], refreshToken: data[1], user: data[3] }))
+    .then(data => ({ accessToken: data[0], refreshToken: data[1], user: data[2] }))
     .catch((error) => {
       console.log(`restore ${dataKey} error.`, error);
       return null;

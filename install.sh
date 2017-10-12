@@ -41,3 +41,7 @@ echo "BASE_URL=http://localhost:3000/api/v1/" > .env.test
 echo "BASE_URL=http://{PUT_YOUR_API_URL_HERE}:3000/api/v1/" > .env.production
 
 react-native link
+
+
+
+echo "DON'T FORGET TO CONFIGURE REACT-NATIVE-CONFIG"

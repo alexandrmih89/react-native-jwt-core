@@ -11,8 +11,8 @@ import AuthSagas, {
   selectRefreshToken,
   tokenRefreshed,
   tokenRefreshing
-} from '../../redux-saga-auth/index';
-import ApiCallSaga, { cancelAll } from '../../redux-saga-api-call-routines/index';
+} from 'redux-saga-auth';
+import ApiCallSaga, { cancelAll } from 'redux-saga-api-call-routines';
 import {
   init,
   ready

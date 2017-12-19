@@ -51,7 +51,7 @@ So, let's start a new module. For example, Login.
 
 Let's start with `modules/Login/LoginActions.js`:
 ```javascript
-import { createRoutine } from '../../core/redux-saga-api-call-routines';
+import { createRoutine } from 'redux-saga-api-call-routines';
 
 const ENTITY = 'LOGIN_FORM';
 
@@ -66,10 +66,10 @@ Ok. Then, let's add `modules/Login/LoginSagas.js`:
 import { put, take } from 'redux-saga/effects';
 import { SubmissionError } from 'redux-form';
 import LoginFormRoutine from './LoginActions';
-import { ApiCall } from '../../core/redux-saga-api-call-routines';
+import { ApiCall } from 'redux-saga-api-call-routines';
 
 //Our Nav login action
-import { login } from '../../core/redux-saga-auth';
+import { login } from 'redux-saga-auth';
 
 //This is to validate your form if you use redux-form
 /***
@@ -271,7 +271,7 @@ Ok, LoginSaga seems a little bit complicated. Here's an example of simple saga (
 import { put, takeEvery } from 'redux-saga/effects';
 import { SubmissionError } from 'redux-form';
 import MainMapRoutine from './MainMapActions';
-import { ApiCall } from '../../core/redux-saga-api-call-routines';
+import { ApiCall } from 'redux-saga-api-call-routines';
 
 
 function* getStoresOnMainMap({ payload }) {
@@ -319,7 +319,7 @@ core/modules/Nav/NavActions exposes the following actionCreators (See NavReducer
 
 ### ApiCall
 
-`import { ApiCall } from '../../core/redux-saga-api-call-routines';`
+`import { ApiCall } from 'redux-saga-api-call-routines';`
 
 ApiCall translates your Routine to a request. Options (pretty the same as for `fetch`):
 

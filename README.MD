@@ -317,3 +317,15 @@ core/modules/Nav/NavActions exposes the following actionCreators (See NavReducer
 | logout | Logout action creator - sets Navigator state to not authenticated (Changes the stack from Authenticated to NotAuthenticated). | - |
 
 
+### ApiCall
+
+`import { ApiCall } from '../../core/redux-saga-api-call-routines';`
+
+ApiCall translates your Routine to a request. Options (pretty the same as for `fetch`):
+
+| Option |||
+|---|---|---|
+| auth | If use or not JWT authentication | |
+| url | Api url | |
+| body | Request Body| |
+| headers | Request Headers | |

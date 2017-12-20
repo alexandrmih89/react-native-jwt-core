@@ -2,7 +2,7 @@
 
 ```
 react-native init exampleProject
-cd examleProject
+cd exampleProject
 git clone git@github.com:alvelig/react-native-jwt-core.git src/core && src/core/install.sh
 ```
 

@@ -1,3 +1,7 @@
+### What's it about?
+
+We are developing a lot of FullStack Apps and came to conclusion we needed a starter that could be maintainable and upgradable. We use JWT, ReactNavigation connected to Redux, redux-saga and redux-form. So we proudly present and share our work to the community. Use it with https://github.com/alvelig/express-jwt-auth-router, which gives a great advantage in bringing JWT, ACL and all the stuff for the backend, and life will become much easier.
+
 ### Installation
 
 ```

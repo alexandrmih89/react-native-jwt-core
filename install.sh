@@ -24,6 +24,11 @@ echo "const reducers = {};" > reducers.js
 echo "export default reducers;" >> reducers.js
 echo "const appSagas = [];" > sagas.js
 echo "export default appSagas;" >> sagas.js
+echo "const middleWares = [];" > middleWares.js
+echo "export default middleWares;" >> middleWares.js
+echo "const enhancers = [];" > enhancers.js
+echo "export default enhancers;" >> enhancers.js
+
 
 cd ..
 mkdir routes
@@ -37,7 +42,7 @@ echo "export const AuthenticatedNavigator = () => <View><Text>AuthenticatedNavig
 
 cd ${DIR}/../..
 
-npm i -S lodash react-native-config react-navigation react-redux redux redux-actions redux-form redux-saga redux-saga-routines styled-components prop-types
+npm i -S lodash react-native-config react-navigation react-redux redux react-navigation-redux-helpers wredux-actions redux-form redux-saga redux-saga-routines styled-components prop-types
 
 npm i -D remote-redux-devtools
 

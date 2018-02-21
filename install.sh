@@ -44,7 +44,7 @@ cd ${DIR}/../..
 
 npm i -S lodash react-native-config react-navigation react-redux redux react-navigation-redux-helpers wredux-actions redux-form redux-saga redux-saga-routines styled-components prop-types
 
-npm i -D remote-redux-devtools
+npm i -D remote-redux-devtools remotedev-rn-debugger
 
 npm i -S git+ssh://git@github.com:alvelig/redux-saga-auth.git
 npm i -S git+ssh://git@github.com:alvelig/redux-saga-api-call-routines.git
@@ -53,6 +53,7 @@ npm i npm-add-script
 node_modules/npm-add-script/cmd.js -k ios -v "react-native run-ios --simulator='iPhone SE'" -f
 node_modules/npm-add-script/cmd.js -k android -v "react-native run-android" -f
 node_modules/npm-add-script/cmd.js -k bundle -v "react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/" -f
+node_modules/npm-add-script/cmd.js -k "post-install" -v "remotedev-debugger --hostname localhost --port 5678 --injectserver" -f
 
 echo "BASE_URL=http://localhost:3000/api/v1/" > .env.development
 echo "BASE_URL=http://localhost:3000/api/v1/" > .env.test

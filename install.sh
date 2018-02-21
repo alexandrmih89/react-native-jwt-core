@@ -53,7 +53,7 @@ npm i npm-add-script
 node_modules/npm-add-script/cmd.js -k ios -v "react-native run-ios --simulator='iPhone SE'" -f
 node_modules/npm-add-script/cmd.js -k android -v "react-native run-android" -f
 node_modules/npm-add-script/cmd.js -k bundle -v "react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/" -f
-node_modules/npm-add-script/cmd.js -k "post-install" -v "remotedev-debugger --hostname localhost --port 5678 --injectserver" -f
+node_modules/npm-add-script/cmd.js -k "postinstall" -v "remotedev-debugger --hostname localhost --port 5678 --injectserver" -f
 
 echo "BASE_URL=http://localhost:3000/api/v1/" > .env.development
 echo "BASE_URL=http://localhost:3000/api/v1/" > .env.test

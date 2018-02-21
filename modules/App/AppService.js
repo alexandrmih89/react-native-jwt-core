@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import invariant from 'fbjs/lib/invariant';
 import { AsyncStorage } from 'react-native';
 import Config from 'react-native-config';
@@ -70,6 +71,14 @@ const getJsonResponse = (r) => {
   });
 };
 
+function urlEncode(obj) {
+  const str = [];
+  for(let p in obj) {
+    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+  }
+  return str.join("&");
+}
+
 export const fetchApi = ({ url, ...options }, token) => {
   console.log(options, token);
 
@@ -78,7 +87,18 @@ export const fetchApi = ({ url, ...options }, token) => {
   }
 
   if(!options.headers) {
-    options.headers = {};
+    options.headers = {
+      "Content-Type": "application/json"
+    };
+  }
+
+  if(_.isObject(options.body)) {
+    if(_.startsWith(options.headers["Content-Type"], "application/json")) {
+      options.body = JSON.stringify(options.body);
+    }
+    if(_.startsWith(options.headers["Content-Type"], "application/x-www-form-urlencoded")) {
+      options.body = urlEncode(options.body);
+    }
   }
 
   options.headers = new Headers({

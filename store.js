@@ -1,3 +1,6 @@
+import {
+  Platform
+} from 'react-native';
 import { composeWithDevTools } from 'remote-redux-devtools';
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
@@ -7,7 +10,11 @@ import enhancers from '../modules/enhancers';
 import rootSaga from './sagas';
 import { navMiddleware } from './modules/Nav/Nav';
 
-const composeEnhancers = composeWithDevTools({});
+const composeEnhancers = composeWithDevTools({
+  name: Platform.OS,
+  hostname: 'localhost',
+  port: 5678
+});
 const sagaMiddleware = createSagaMiddleware();
 
 export const configureStore = () => {

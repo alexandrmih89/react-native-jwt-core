@@ -38,7 +38,7 @@ export const nav = (state = initialNavState, action) => {
       }
       break;
     case 'Nav/back':
-      nextState = AppNavigator.router.getStateForAction(NavigationActions.back(), state);
+      nextState = AppNavigator.router.getStateForAction(NavigationActions.back({ key: payload }), state);
       break;
     case 'Nav/set_params':
       nextState = AppNavigator.router.getStateForAction(NavigationActions.setParams(payload), state);
@@ -54,6 +54,7 @@ export const nav = (state = initialNavState, action) => {
         }
         nextState = AppNavigator.router.getStateForAction(NavigationActions.reset({
           index: 0,
+          key: payload.key,
           actions: [ NavigationActions.navigate({ routeName, params }) ]}), state);
       }
       break;

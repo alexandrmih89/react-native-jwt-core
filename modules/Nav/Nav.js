@@ -1,4 +1,6 @@
 import React from 'react';
+import _ from 'lodash';
+import { diff } from 'deep-diff';
 import { BackHandler } from 'react-native';
 import { addNavigationHelpers, NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
@@ -20,7 +22,10 @@ class AppWithNavigationState extends React.Component {
   }
   onBackPress = () => {
     const { dispatch, nav } = this.props;
-    if (nav.index === 0) {
+    if(AppNavigator.router.getStateForAction(NavigationActions.back(), nav) === nav) {
+      console.groupCollapsed('The app went `background`.');
+      console.info("Don't forget to use singleTop and moveTaskToBack(true) - https://github.com/facebook/react-native/issues/13775");
+      console.groupEnd();
       return false;
     }
     dispatch(NavigationActions.back());

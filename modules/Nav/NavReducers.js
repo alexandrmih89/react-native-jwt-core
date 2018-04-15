@@ -14,6 +14,27 @@ const resetTo = (routeName) => NavigationActions.reset({
   actions: [ NavigationActions.navigate({ routeName }) ]
 });
 
+const formatActions = (actions) => {
+  const actionsArray = [];
+  if(_.isArray(actions)) {
+    actions.forEach(action => {
+      let routeName, params;
+      if(_.isString(action)) {
+        routeName = action;
+      } else {
+        routeName = action.routeName;
+        params = action.params;
+      }
+      actionsArray.push(NavigationActions.navigate({ routeName, params }));
+    });
+  } else {
+    const { routeName, params } = actions;
+    actionsArray.push(NavigationActions.navigate({ routeName, params }));
+  }
+  console.log(actionsArray);
+  return actionsArray;
+};
+
 export const nav = (state = initialNavState, action) => {
   let nextState;
   const { payload } = action;
@@ -45,17 +66,20 @@ export const nav = (state = initialNavState, action) => {
       break;
     case 'Nav/reset':
       if(payload) {
-        let routeName, params;
+        let routeName, params, key;
         if (_.isString(payload)) {
           routeName = payload;
         } else {
           routeName = payload.routeName;
           params = payload.props || payload.params;
+          key = payload.key
         }
+        const actions = formatActions(payload.actions || { routeName, params }) ;
         nextState = AppNavigator.router.getStateForAction(NavigationActions.reset({
-          index: 0,
-          key: payload.key,
-          actions: [ NavigationActions.navigate({ routeName, params }) ]}), state);
+          index: actions.length - 1,
+          key,
+          actions
+        }), state);
       }
       break;
     default:

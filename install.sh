@@ -42,7 +42,7 @@ echo "export const AuthenticatedNavigator = () => <View><Text>AuthenticatedNavig
 
 cd ${DIR}/../..
 
-npm i -S lodash react-native-config react-navigation react-redux redux react-navigation-redux-helpers wredux-actions redux-form redux-saga redux-saga-routines styled-components prop-types
+npm i -S lodash react-native-config react-navigation react-redux redux react-navigation-redux-helpers redux-actions redux-form redux-saga redux-saga-routines styled-components prop-types
 
 npm i -D remote-redux-devtools remotedev-rn-debugger
 

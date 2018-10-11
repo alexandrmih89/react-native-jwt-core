@@ -1,7 +1,7 @@
 import {
   SplashScreen,
   NotAuthenticatedNavigator,
-  AuthenticatedNavigator
+  AuthenticatedNavigator,
 } from '../../../routes/navigators';
 import { StackNavigator } from 'react-navigation';
 

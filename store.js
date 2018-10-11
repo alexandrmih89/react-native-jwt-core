@@ -1,8 +1,10 @@
 import {
   Platform
 } from 'react-native';
-import { composeWithDevTools } from 'remote-redux-devtools';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore, applyMiddleware } from 'redux';
+import { persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 import createSagaMiddleware from 'redux-saga';
 import { rootReducer } from './reducers';
 import middleWares from '../modules/middleWares';
@@ -11,15 +13,22 @@ import rootSaga from './sagas';
 import { navMiddleware } from './modules/Nav/Nav';
 
 const composeEnhancers = composeWithDevTools({
-  name: Platform.OS,
-  hostname: 'localhost',
-  port: 5678
+  name: Platform.OS // Specify here name, actionsBlacklist, actionsCreators and other options
 });
 const sagaMiddleware = createSagaMiddleware();
 
+const persistConfig = {
+  key: 'root',
+  storage: storage,
+  whitelist: ['filter']
+}
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
 export const configureStore = () => {
   const store = createStore(
-    rootReducer,
+    persistedReducer,
+    //rootReducer,
     composeEnhancers.apply(null, [
       ...enhancers,
       applyMiddleware.apply(null, [
@@ -40,3 +49,5 @@ export const configureStore = () => {
 
   return store;
 };
+
+export const store = configureStore()
